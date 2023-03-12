@@ -26,7 +26,7 @@ public class ThreadCarro extends Thread{
 		}
 	}
 
-	// Imprimi em console o sentido que o carro está passando.
+	// Imprime em console o sentido que o carro está passando.
 	private void cruzarCarro() {
 		int tempoCruzando = (int)((Math.random() * 2001) + 1000); // 1 - 3 s.
 		switch (sentido) {
@@ -50,7 +50,7 @@ public class ThreadCarro extends Thread{
 		}
 	}
 
-	// Imprimi em console quando o carro terminou de passar pelo cruzamento.
+	// Imprime em console quando o carro terminou de passar pelo cruzamento.
 	private void chegarCarro() {
 		System.out.println("O carro #" + carroId + " passou pelo cruzamento.");
 	}
