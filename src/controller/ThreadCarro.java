@@ -4,14 +4,14 @@ import java.util.concurrent.Semaphore;
 
 public class ThreadCarro extends Thread{
 	
-	private char sentido;
 	private Semaphore semaforo;
+	private char sentido;
 	private int carroId;
 	
-	public ThreadCarro(char sentido, Semaphore semaforo) {
-		this.sentido = sentido;
+	public ThreadCarro(Semaphore semaforo, char sentido, int carroId) {
 		this.semaforo = semaforo;
-		carroId = (int) getId();
+		this.sentido = sentido;
+		this.carroId = carroId;
 	}
 	
 	public void run() {
@@ -21,8 +21,8 @@ public class ThreadCarro extends Thread{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
-			semaforo.release();
 			chegarCarro();
+			semaforo.release();
 		}
 	}
 
@@ -31,10 +31,10 @@ public class ThreadCarro extends Thread{
 		int tempoCruzando = (int)((Math.random() * 2001) + 1000); // 1 - 3 s.
 		switch (sentido) {
 		case 'N':
-			System.out.println("O carro #" + carroId + " está cruzando de norte à sul.");
+			System.out.println("O carro #" + carroId + " está cruzando de sul à norte.");
 			break;
 		case 'S':
-			System.out.println("O carro #" + carroId + " está cruzando de sul à norte.");
+			System.out.println("O carro #" + carroId + " está cruzando de norte à sul.");
 			break;
 		case 'L':
 			System.out.println("O carro #" + carroId + " está cruzando de oeste à leste.");

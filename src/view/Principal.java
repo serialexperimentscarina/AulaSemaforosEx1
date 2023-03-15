@@ -10,8 +10,8 @@ public class Principal {
 		Semaphore mutex = new Semaphore(1);
 		char[] direcoes = {'N', 'S', 'L', 'O'};
 		
-		for (char direcao : direcoes) {
-			Thread carro = new ThreadCarro(direcao, mutex);
+		for (int i = 0; i < 4; i++) {
+			Thread carro = new ThreadCarro(mutex, direcoes[i], i + 1);
 			carro.start();
 		}
 	}
